@@ -1,7 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import { Input, List } from 'antd';
+import 'antd/dist/antd.css';
+const { Search } = Input;
 
 function App() {
     
@@ -13,6 +15,7 @@ function App() {
     }
 
     const onSearch = (e) => {
+
         e.preventDefault();
         axios.get(`https://api.github.com/users/${dataSearch}/repos`).then(result => {
             console.log(result)
@@ -24,20 +27,37 @@ function App() {
     }
 
     return (
-        <div className="" style={{padding:20}}>
+        <div className="App" style={{padding:20}}>
         <p style={{color:'black',fontWeight:"bold"}}>List Repositories github</p>
         <div style={{ marginBottom:10 }}>
         <form onSubmit={onSearch}>
-        <input type="text" name="search" onChange={(e) =>handleChange(e.target.value)} />
-        <button type="submit">Search</button>
+        {/* <input type="text" name="search" onChange={(e) =>handleChange(e.target.value)} />
+        <button type="submit">Search</button> */}
+        
+        <Search
+            placeholder="input search text"
+            allowClear
+            enterButton="Search"
+            size="large"
+            onSearch={onSearch}
+            onChange={(e) => handleChange(e.target.value)}
+        />
+        
         </form>
         </div>
         {
-            (list.length > 0) ? list.map((data) => {
-                return(
-                    <li>{data.name}</li>
-                )
-            }) : <p>Data not found!</p>
+            (list.length > 0) ? 
+                    // <li>{data.name}</li>
+                    <List
+                        bordered
+                        dataSource={list}
+                        renderItem={item => (
+                            <List.Item>
+                                {item.name}
+                            </List.Item>
+                        )}
+                        />
+             : <p>Data not found!</p>
         }
         </div>
     );
