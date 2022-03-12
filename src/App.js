@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Input, List } from 'antd';
+import { Divider, Input, List } from 'antd';
 import 'antd/dist/antd.css';
 const { Search } = Input;
 
@@ -28,12 +28,9 @@ function App() {
 
     return (
         <div className="App" style={{padding:20}}>
-        <p style={{color:'black',fontWeight:"bold"}}>List Repositories github</p>
+        <p style={{color:'black',fontWeight:"bold",fontSize:20}}>List Repositories github</p>
         <div style={{ marginBottom:10 }}>
         <form onSubmit={onSearch}>
-        {/* <input type="text" name="search" onChange={(e) =>handleChange(e.target.value)} />
-        <button type="submit">Search</button> */}
-        
         <Search
             placeholder="input search text"
             allowClear
@@ -47,16 +44,15 @@ function App() {
         </div>
         {
             (list.length > 0) ? 
-                    // <li>{data.name}</li>
-                    <List
-                        bordered
-                        dataSource={list}
-                        renderItem={item => (
-                            <List.Item>
-                                {item.name}
-                            </List.Item>
-                        )}
-                        />
+                <List
+                    bordered
+                    dataSource={list}
+                    renderItem={item => (
+                        <List.Item>
+                            {item.name}
+                        </List.Item>
+                    )}
+                    />
              : <p>Data not found!</p>
         }
         </div>
