@@ -28,11 +28,11 @@ function App() {
 
     return (
         <div className="App" style={{padding:20}}>
-        <p style={{color:'black',fontWeight:"bold",fontSize:20}}>List Repositories github</p>
+        <p style={{color:'black',fontWeight:"bold",fontSize:20}}>List Repositories Github</p>
         <div style={{ marginBottom:10 }}>
         <form onSubmit={onSearch}>
         <Search
-            placeholder="input search text"
+            placeholder="Search github by user"
             allowClear
             enterButton="Search"
             size="large"
