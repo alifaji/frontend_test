@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Divider, Input, List } from 'antd';
+import { Input, List } from 'antd';
 import 'antd/dist/antd.css';
 const { Search } = Input;
 
